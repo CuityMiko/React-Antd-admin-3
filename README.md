@@ -1,10 +1,11 @@
 # React-Antd-admin
-### [点我预览](http://www.baidu.com)
+### [点我预览](https://whrweb.github.io/React-Antd-admin/index.html)
 
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
 -   基于Antd UI 设计语言，可按需引入模块
 -   浅度响应式设计
+-   动态加载路由对应内容组件js文件
 
 ## 开发构建
 
