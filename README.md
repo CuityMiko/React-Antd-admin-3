@@ -1,5 +1,5 @@
 # React-Antd-admin
-### [点我预览](https://whrweb.github.io/React-Antd-admin/index.html)
+### [点我预览](https://whrweb.github.io/React-Antd-admin/preview/index.html)
 
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
