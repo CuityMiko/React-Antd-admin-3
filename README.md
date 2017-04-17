@@ -15,12 +15,12 @@
 | └── index.html     
 ├── /src/            # 项目源码目录
 │ ├── /components/   # UI组件及UI相关方法
+│ │ ├── Header.js     # 跨域请求
+│ │ └── Menu.js      # 左侧菜单组件
 │ ├── /models/       # 数据模型
 │ ├── /common/       # 通用函数
 │ │ ├── jsonp.js     # 跨域请求
 │ │ └── utils.js     # 工具函数
-│ ├── /containers/   # 容器组件
-│ │ └── menu.js      # 左侧菜单组件
 │ ├── routes.js      # 路由配置
 │ ├── app.js         # 整体布局控制
 │ ├── index.less     # index样式文件
