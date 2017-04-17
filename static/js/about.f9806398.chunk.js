@@ -1,2 +1,0 @@
-webpackJsonp([3],{185:function(e,t,u){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var a=u(1),l=n(a);t.default=l.default.createClass({displayName:"About",render:function(){return l.default.createElement("div",null,"我的记录目前是空...")}})}});
-//# sourceMappingURL=about.f9806398.chunk.js.map
