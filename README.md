@@ -61,5 +61,5 @@ npm run build
 
 ## 其他
 - 修改了安装目录下，react-scripts文件夹中的 webpack.config.dev.js 和 webpack.config.prod.js,(看下图),达到使用import引入antd模块，即可同时引入antd对应模块的组件和样式文件。另，可通过修改安装目录下antd/lib文件夹下对应的文件，完成自定义样式的需求。
-![](assets/1.jpeg)
+![](assets/react-scripts.png)
 
