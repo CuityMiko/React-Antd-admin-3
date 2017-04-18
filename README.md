@@ -4,6 +4,7 @@
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
 -   基于Antd UI 设计语言，可按需引入模块
+-   基于[react-router](https://github.com/ReactTraining/react-router)进行路由控制，实现单页应用
 -   浅度响应式设计
 -   动态加载路由对应内容组件js文件
 
