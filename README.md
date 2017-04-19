@@ -31,9 +31,10 @@
 └── proxy.config.js  # 数据mock配置
 ```
 
-文件命名说明:
+#### 文件命名说明:
 
 -   components：组件（方法）为单位以文件夹保存，文件夹名组件首字母大写，方法首字母小写,文件夹内主文件与文件夹同名，多文件以`index.js`导出对象
+
 
 ### 快速开始
 
@@ -58,6 +59,27 @@ npm run build
 将会生成dist目录
 ```
     
+## 如何从零配置环境
+
+#### 配置过程
+-   create-react-app 命令 构建基础环境
+-   npm install 所需插件等，例如 antd  react-router 
+-   自定义react-scripts文件目录下的webpack.config.*.js文件,改为antd运行less的环境
+-   安装babel-plugin-import，修改antd下的相关less文件，自定义颜色等样式
+
+#### 环境配置中遇到的问题
+-   Q：用import {Layout} from 'antd' ,只是加载了js，没有加载进样式
+    
+    A：在node_modules/react-scripts/config/webpack.config.dev.js文件中，在module.loaders[1].query对象中增加
+    ```javascript
+          plugins: [
+            ['import', [{ libraryName: "antd", style: 'css' }]]
+          ]
+    ```
+-   Q：怎么使用less加载器加载.less文件
+    
+    A：在node_modules/react-scripts/config/webpack.config.dev.js文件中,在module.loaders对象中做相应增加test和loader配置，
+       然后在module.loaders[0].exclude对象中增加/\.less$/
 
 
 ## 其他
