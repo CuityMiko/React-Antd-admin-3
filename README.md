@@ -27,8 +27,7 @@
 │ ├── app.js         # 整体布局控制
 │ ├── index.less     # index样式文件
 │ └──index.js        # 入口文件
-├── package.json     # 项目信息
-└── proxy.config.js  # 数据mock配置
+└── package.json     # 项目信息
 ```
 
 #### 文件命名说明:
