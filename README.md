@@ -8,6 +8,8 @@
 -   浅度响应式设计
 -   动态加载路由对应内容组件js文件
 
+-   此版本只是框架，方便clone直接应用；如想查看实例DEMO代码，请查看[v2版本](https://github.com/whrweb/React-Antd-admin/tree/v2) 
+
 ## 开发构建
 
 #### 目录结构
