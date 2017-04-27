@@ -4,6 +4,8 @@ time: 2017.4.19
 
 ### [点我预览](http://data.btime.com)
 
+### < v2版本，添加了 echarts-for-react 图表模块 >
+
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
 -   基于Antd UI 设计语言，可按需引入模块
