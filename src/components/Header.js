@@ -1,5 +1,5 @@
 /*
-** header
+** Header
 ** auth:whr
 ** time:2017.4.6
 */
@@ -9,7 +9,8 @@ const { Header } = Layout;
 
 export default React.createClass({
   toUserInfo(){
-    location.href = '/user/about/mylog';
+    // location.href = '/user/about/mylog';
+    location.href = '/#/user/about/mylog';
   },
   render() {
     return (

@@ -1,5 +1,5 @@
-/*
-** sider.js 左侧菜单栏
+﻿/*
+** Menu.js 左侧菜单栏
 ** auth:whr
 ** time:2017.4.6
 */
@@ -48,9 +48,6 @@ class CusMenu extends React.Component {
   renderMenu(){
     const repeatRender = ({path,label,icon,child},i) => { //遍历菜单list对象，拼装菜单组件
       if(!child || !child.length){
-        if(path === '/business/list'){// 对业务监控-->列表组进行参数处理
-          path += '/1234567'
-        }
         return (<Menu.Item key={path}><Link to={path}>{icon && <Icon type={icon} />}{label}</Link></Menu.Item>)
       }
       // 此处if判断是为了处理this.keysMap的值，从而达到：打开当前菜单，关闭其他非父级菜单
@@ -75,9 +72,9 @@ class CusMenu extends React.Component {
           mode="inline"
           openKeys={this.state.openKeys}
           selectedKeys={[this.state.current]}
-          style={{ height: '100%' }}
           onOpenChange={this.onOpenChange}
           onClick={this.handleClick}
+          style={{borderRight: '0'}}
         >
           <Menu.Item key="0">
             <IndexLink to="/"><Icon type="home" />首页</IndexLink>
@@ -89,5 +86,3 @@ class CusMenu extends React.Component {
 }
 
 export default CusMenu
-
-

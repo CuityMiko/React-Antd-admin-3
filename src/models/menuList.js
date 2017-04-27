@@ -11,8 +11,13 @@ let menuList = [
     icon:'bar-chart',
     child:[
       {
-        path:'list',
-        label:'列表组',
+        path:'ctr',
+        label:'高CTR',
+        child:[]
+      },
+      {
+        path:'channel',
+        label:'频道/类目内容',
         child:[]
       },
     ]

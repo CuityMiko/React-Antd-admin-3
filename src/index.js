@@ -1,4 +1,4 @@
-/*
+﻿/*
 ** index.js 入口JS文件 
 ** auth:whr
 ** time:2017.3.23
@@ -10,6 +10,6 @@ import routes from './routes';
 import './index.less';
 
 render(
-	<Router history={hashHistory } routes={routes}></Router>,
+	<Router history={ hashHistory } routes={routes}></Router>,
 	document.getElementById('root')
 );

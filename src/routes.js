@@ -1,5 +1,5 @@
 /*
-** router 路由
+** routes 路由
 ** auth:whr
 ** time:2017.4.6
 */
@@ -7,7 +7,6 @@ import NotFound from './components/NotFound'
 import App from './App.js' //页面整体布局
 import Home from './components/Home.js' //首页
 
-// routes第一种写法：
 export default {
 	path: '/',
 	component: App,
@@ -17,10 +16,18 @@ export default {
 	  	path: 'business', 
 	  	childRoutes: [
 	  		{
-	  			path: 'list/:tid',
+	  			path: 'ctr',
 	  			getComponent(nextState,cb){
 	  				require.ensure([], (require) => {
-	  				  cb(null, require('./components/BsnList.js').default)
+	  				  cb(null, require('./components/CTR.js').default)
+	  				}, 'business')
+	  			}
+	  		},
+	  		{
+	  			path: 'channel',
+	  			getComponent(nextState,cb){
+	  				require.ensure([], (require) => {
+	  				  cb(null, require('./components/ChannelInfo.js').default)
 	  				}, 'business')
 	  			}
 	  		}

@@ -1,8 +1,8 @@
-/*
-** app.js 页面整体布局
+﻿/*
+** App.js 页面整体布局
 ** auth:whr
 ** time:2017.4.6
-*/
+*/ 
 import React from 'react';
 import { Layout } from 'antd';
 import Menu from './components/Menu'; //左侧菜单栏
@@ -17,16 +17,21 @@ export default React.createClass({
       <Layout>
         <Header />
         <Layout>
-          <Sider width={200} collapsible={false} collapsedWidth={0}>
+          <Sider 
+            width={200} 
+            collapsible={false} 
+            collapsedWidth={0} 
+            style={{background:'#fff',borderRight: '1px solid #e9e9e9'}}
+          >
             <Menu menuList={menuList} />
           </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
+          <Layout>
             <Content style={{ padding: 24, minHeight: 500 }}>
               { this.props.children }
             </Content>
+            <Footer />
           </Layout>
         </Layout>
-        <Footer />
       </Layout>
     )
   }
