@@ -15,9 +15,6 @@ export default React.createClass({
 		const {cindex, rankkey, form} = this.props;
 		const { getFieldDecorator } = form;
 		const key = `${cindex}级类目`;
-		if(!this.props.isShow){
-			return <i></i>
-		}
 		return (
 			<FormItem
 				key={key}

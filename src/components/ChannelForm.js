@@ -192,7 +192,7 @@ const SearchForm = React.createClass({
 	handleSubmit(e){
 		e.preventDefault();
 		if(!this.isChange){ //如果当前没有改变选择框，则不可重复 提交表单
-			message.warning('表单未更改，请勿重复提交');
+			message.warning('请更改"类目"后再提交表单');
 			return;
 		}
 		this.props.form.validateFields((err,values) => {
@@ -211,17 +211,20 @@ const SearchForm = React.createClass({
 		const {rank, rank1, rank2} = this.state;
 		const getCate1 = () => {
 			const rank1Category = channelList[rank].categories;
-			items.push(<MyFormItem isShow={rank1Category.length} form={this.props.form} category={rank1Category} rankkey={rank} cindex={1} onChange={this.handleChange} key={'1cate'} />);
+			if(!(rank1Category && rank1Category.length))return;
+			items.push(<MyFormItem form={this.props.form} category={rank1Category} rankkey={rank} cindex={1} onChange={this.handleChange} key={'1cate'} />);
 		}
 		const getCate2 = () => {
 			let rank2Category = rank1 && channelList[rank].categories[rank1].categories;
+			if(!(rank2Category && rank2Category.length))return;
 			let rank2_key = rank1 && rank + '-' + rank1;
-			items.push(<MyFormItem isShow={rank2Category && rank2Category.length} form={this.props.form} category={rank2Category} rankkey={rank2_key || '2not'} cindex={2} onChange={this.handleChange} key={'2cate'} />)
+			items.push(<MyFormItem form={this.props.form} category={rank2Category} rankkey={rank2_key || '2not'} cindex={2} onChange={this.handleChange} key={'2cate'} />)
 		}
 		const getCate3 = () => {
 			let rank3Category = rank1 && rank2 && channelList[rank].categories[rank1].categories[rank2].categories;
+			if(!(rank3Category && rank3Category.length))return;
 			let rank3_key = rank1 && rank2 && rank + '-' + rank1 + '-' + rank2;
-			items.push(<MyFormItem isShow={rank3Category && rank3Category.length} form={this.props.form} category={rank3Category} rankkey={rank3_key || '3not'} cindex={3} onChange={this.handleChange} key={'3cate'} />)
+			items.push(<MyFormItem form={this.props.form} category={rank3Category} rankkey={rank3_key || '3not'} cindex={3} onChange={this.handleChange} key={'3cate'} />)
 		}
 		getCate1();
 		if(index === 1){ //根据不同类目选择框触发的事件，分别执行不同代码
