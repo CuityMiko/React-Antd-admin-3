@@ -1,19 +1,17 @@
-#### v2版本特性
+#### v3版本特性
 ```bash
--   添加了 echarts-for-react 图表模块
--   添加了 mockjs 模拟服务端数据
+-   添加了 react-router-redux , 并实例应用
 ```
 
 # React-Antd-admin 
 by:   j-wanghairong@btime.com
-time: 2017.4.19
-
-### [点我预览](http://data.btime.com)
+time: 2017.5.9
 
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
 -   基于Antd UI 设计语言，可按需引入模块
 -   基于[react-router](https://github.com/ReactTraining/react-router)进行路由控制，实现单页应用
+-   基于[react-router-redux](https://github.com/reactjs/react-router-redux)进行路由和redux管理
 -   浅度响应式设计
 -   动态加载路由对应内容组件js文件
 
@@ -23,7 +21,7 @@ time: 2017.4.19
 ```bash
 ├── /dist/           # 项目输出目录
 ├── /public/         # 
-| └── index.html     
+| └── index.html     # 入口html文件
 ├── /src/            # 项目源码目录
 │ ├── /components/   # UI组件及UI相关方法
 │ │ ├── Header.js    # 跨域请求
@@ -33,9 +31,12 @@ time: 2017.4.19
 │ │ ├── jsonp.js     # 跨域请求
 │ │ └── utils.js     # 工具函数
 │ ├── routes.js      # 路由配置
+│ ├── actions.js     # redux 的 actions管理
+│ ├── reducers.js    # redux 的 reducers管理
+│ ├── store.js       # redux 的 store管理
 │ ├── app.js         # 整体布局控制
 │ ├── index.less     # index样式文件
-│ └──index.js        # 入口文件
+│ └──index.js        # 入口js文件
 ├── package.json     # 项目信息
 └── proxy.config.js  # 数据mock配置
 ```
