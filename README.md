@@ -2,9 +2,9 @@
 ### [点我预览](https://whrweb.github.io/React-Antd-admin/preview/index.html)
 
 ## 特别说明
--   此版本只是框架，方便clone直接应用；
--   查看react-router路由应用实例，请查看[v2版本](https://github.com/whrweb/React-Antd-admin/tree/v2) 
--   查看react-router-redux 路由 + redux 引用实例， 请查看[v3版本](https://github.com/whrweb/React-Antd-admin/tree/v3) 
+-   master版本只是基础框架，react + react-router + antd，方便clone直接应用；方便根据实际项目需求拓展；
+-   查看react + react-router + antd 应用实例，请查看[v2版本](https://github.com/whrweb/React-Antd-admin/tree/v2) 
+-   查看react + react-router + antd + react-router-redux 应用实例， 请查看[v3版本](https://github.com/whrweb/React-Antd-admin/tree/v3) 
 
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
