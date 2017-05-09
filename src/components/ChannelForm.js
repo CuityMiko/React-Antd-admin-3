@@ -5,10 +5,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Form, Select, message } from 'antd'
-import MyFormItem from './ChannelFormItem'
-
 import { channelListAction } from '../actions'
-
+import MyFormItem from './ChannelFormItem'
 const { Item: FormItem} = Form;
 const {Option} = Select;
 
@@ -272,7 +270,6 @@ class SearchFormCpt extends React.Component{
 		)
 	}
 }
-
 
 function mapStateToProps(state, ownProps){ //负责输入逻辑
   return {

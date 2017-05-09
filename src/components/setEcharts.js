@@ -3,7 +3,6 @@
 ** auth:whr
 ** time:2017.3.23
 */
-
 import { deepCopy } from '../common/utils.js'
 import initEchartsConfig from '../models/initEchartsConfig';
 

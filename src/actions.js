@@ -1,4 +1,4 @@
-﻿// 我是action
+﻿// 我是actions
 
 // action书写格式：
 // let action = {

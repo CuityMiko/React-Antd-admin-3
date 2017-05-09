@@ -6,7 +6,6 @@
 import React from 'react'
 import { Layout, Icon } from 'antd';
 import PropTypes from 'prop-types'
-
 const { Header } = Layout;
 
 class Head extends React.Component{

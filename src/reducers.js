@@ -1,6 +1,5 @@
 ﻿// 我是reducer 
 
-
 export function reducer(state = {},action){
 	switch(action.type){
 		case 'LOGIN':
