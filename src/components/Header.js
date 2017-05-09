@@ -1,17 +1,21 @@
 /*
-** header
+** Header
 ** auth:whr
 ** time:2017.4.6
 */
 import React from 'react'
 import { Layout, Icon } from 'antd';
+import PropTypes from 'prop-types'
+
 const { Header } = Layout;
 
-export default React.createClass({
+class Head extends React.Component{
   toUserInfo(){
-    location.href = '/user/about/mylog';
-  },
+    this.context.router.push('/user/about/mylog');
+    // location.href = '/#/user/about/mylog';
+  }
   render() {
+    const { onLogout }  = this.props;
     return (
     	<Header className="header">
     	  <div className="logo mt-15 fl">
@@ -19,11 +23,17 @@ export default React.createClass({
     	  </div>
     	  <div className="user fr mt-15">
     	  	<span className="user-name" onClick={this.toUserInfo}>wanghairong</span>
-    	    <div className="icon-logout ml-15">
+    	    <div className="icon-logout ml-15" onClick={onLogout}>
     	    	<Icon type="logout" style={{color:'#fff',fontSize:'22px'}}/>
     	    </div>
     	  </div>
     	</Header>
     )
   }
-})
+}
+
+Head.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
+export default Head

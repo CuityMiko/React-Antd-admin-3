@@ -1,5 +1,5 @@
 /*
-** footer
+** Footer
 ** auth:whr
 ** time:2017.4.6
 */
@@ -7,7 +7,7 @@ import React from 'react'
 import { Layout } from 'antd';
 const { Footer } = Layout;
 
-export default React.createClass({
+export default class Foot extends React.Component{
   render() {
     return (
     	<Footer className="footer text-center">
@@ -15,4 +15,4 @@ export default React.createClass({
         </Footer>
     )
   }
-})
+}

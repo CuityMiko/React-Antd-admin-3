@@ -3,6 +3,10 @@
 ** auth:whr
 ** time:2017.3.23
 */
+body,
+#root{
+  height: 100%;
+}
 .logo{
   width: 300px;
   height: 30px;
@@ -11,7 +15,7 @@
   padding-left: 140px;
   font-size: 19px;
   color: #fff;
-  /*font-weight: bold;*/
+  font-weight: bold;
 }
 .user{
   line-height: normal;
@@ -58,6 +62,12 @@
   background: url('http://p4.qhimg.com/t0137561812828d8158.gif') no-repeat;
 }
 /*layout -e*/
+
+/*resetTable*/
+.ant-table table,
+.ant-table-thead > tr > th{
+  text-align: center !important;
+}
 
 .hide {
   display: none;

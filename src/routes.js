@@ -1,13 +1,12 @@
-/*
-** router Â·ÓÉ
+ï»¿/*
+** routes
 ** auth:whr
 ** time:2017.4.6
 */
 import NotFound from './components/NotFound'
-import App from './App.js' //Ò³ÃæÕûÌå²¼¾Ö
-import Home from './components/Home.js' //Ê×Ò³
+import App from './App.js' 
+import Home from './components/Home.js'
 
-// routesµÚÒ»ÖÖÐ´·¨£º
 export default {
 	path: '/',
 	component: App,
@@ -17,10 +16,18 @@ export default {
 	  	path: 'business', 
 	  	childRoutes: [
 	  		{
-	  			path: 'list/:tid',
+	  			path: 'ctr',
 	  			getComponent(nextState,cb){
 	  				require.ensure([], (require) => {
-	  				  cb(null, require('./components/BsnList.js').default)
+	  				  cb(null, require('./components/CTR.js').default)
+	  				}, 'business')
+	  			}
+	  		},
+	  		{
+	  			path: 'channel',
+	  			getComponent(nextState,cb){
+	  				require.ensure([], (require) => {
+	  				  cb(null, require('./components/ChannelInfo.js').default)
 	  				}, 'business')
 	  			}
 	  		}
