@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon } from 'antd'
 
 export default React.createClass({
-  contextTypes: {
+  contextTypes: { //只要没有在 contextTypes 中声明的属性一律不准加入 context
     router: React.PropTypes.object.isRequired
   },
   goCtrPath(){
