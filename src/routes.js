@@ -1,13 +1,13 @@
 /*
-** router 路由
+** router 
 ** auth:whr
 ** time:2017.4.6
 */
 import NotFound from './components/NotFound'
-import App from './App.js' //页面整体布局
-import Home from './components/Home.js' //首页
+import App from './App.js' 
+import Home from './components/Home.js' 
 
-// routes第一种写法：
+// routes
 export default {
 	path: '/',
 	component: App,
