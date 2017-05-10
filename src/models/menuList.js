@@ -57,7 +57,7 @@ let menuList = [
 function addFatherPath(v,i){
 	if(v.icon){//一级菜单
 		v.path = '/' + v.path;
-		if(v.child && v.child.length){
+		if(v.child && v.child.length){//二级菜单
 			eachChild(v);
 		}
 	}

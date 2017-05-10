@@ -39,8 +39,7 @@ time: 2017.5.9
 │ ├── mock.js        # 脱离后端进行数据模拟测试
 │ ├── index.less     # index样式文件
 │ └──index.js        # 入口js文件
-├── package.json     # 项目信息
-└── proxy.config.js  # 数据mock配置
+└── package.json     # 项目信息
 ```
 
 #### 文件命名说明:
