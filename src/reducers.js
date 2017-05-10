@@ -1,5 +1,8 @@
-﻿// 我是reducer 
-
+﻿/*
+** reducers.js 进行redux的 reducer 管理
+** auth:whr
+** time:2017.4.27
+*/
 export function reducer(state = {},action){
 	switch(action.type){
 		case 'LOGIN':

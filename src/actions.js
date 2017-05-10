@@ -1,4 +1,8 @@
-﻿// 我是actions
+﻿/*
+** action.js 进行redux的 action 管理
+** auth:whr
+** time:2017.4.27
+*/
 
 // action书写格式：
 // let action = {
