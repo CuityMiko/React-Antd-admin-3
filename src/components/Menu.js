@@ -9,19 +9,26 @@ import { Link , IndexLink} from 'react-router'
 import { Menu, Icon} from 'antd';
 const { SubMenu } = Menu;
 
+function getOpenKeys(pathname){
+  if(pathname.indexOf('/') === -1)return [];
+  const arr = pathname.split('/');
+  switch(arr.length){
+    case 3: 
+      return [`/${arr[1]}`];
+    case 4:
+      return [`/${arr[1]}`, `/${arr[1]}/${arr[2]}`];
+    default:
+      return []
+  }
+}
+
 class CusMenu extends React.Component {
   constructor(props){
     super(props);
-    if(location.pathname === '/user/about/mylog'){ //如果初始化进入的是我的记录，则菜单栏-我的记录为选中状态
-      this.state = {
-        current: location.pathname,
-        openKeys: ['/user','/user/about']
-      }
-    }else{
-      this.state = { //通过es6类的继承实现时 state的初始化要在constructor中声明
-        current: '0', // 初始默认打开的末级菜单的key
-        openKeys: [], //初始默认打开的菜单，如果是3级菜单，要把2级、3级菜单按序填写 ['sub2','sub3']
-      }
+    const pathname = location.pathname;
+    this.state = { //通过es6类的继承实现时 state的初始化要在constructor中声明
+      current: pathname, // 初始默认打开的末级菜单的key
+      openKeys: getOpenKeys(pathname) //初始默认打开的菜单，如果是3级菜单，要把2级、3级菜单按序填写 ['sub2','sub3']
     }
     this.keysMap = {}; //二级菜单下如果还有三级菜单，要在map中写上，用于触发openChange时使用
     this.MenuChildRender = [];
@@ -76,7 +83,7 @@ class CusMenu extends React.Component {
           onClick={this.handleClick}
           style={{borderRight: '0'}}
         >
-          <Menu.Item key="0">
+          <Menu.Item key="/">
             <IndexLink to="/"><Icon type="home" />首页</IndexLink>
           </Menu.Item>
           {this.MenuChildRender}

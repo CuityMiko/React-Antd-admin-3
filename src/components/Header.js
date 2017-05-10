@@ -9,8 +9,8 @@ const { Header } = Layout;
 
 export default React.createClass({
   toUserInfo(){
-    // location.href = '/user/about/mylog';
-    location.href = '/#/user/about/mylog';
+    location.href = '/user/about/mylog';
+    // location.href = '/#/user/about/mylog';
   },
   render() {
     return (
