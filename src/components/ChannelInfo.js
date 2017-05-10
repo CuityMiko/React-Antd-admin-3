@@ -5,8 +5,8 @@
 */
 
 import React from 'react'
-import Mock from 'mockjs'
 import { message } from 'antd'
+import { mockChannelData } from '../mock'
 import ReactEcharts from 'echarts-for-react'
 import ChannelForm from './ChannelForm.js'
 import Table from './Table'
@@ -32,19 +32,9 @@ export default React.createClass({
     const dataLen = props.length;
 
     setTimeout(() => {  // 模拟ajax数据
-      const mockData = Mock.mock({
-        "error": 0,
-        "msg": "",
-        "data|11-22": [
-          {
-            "time": /2017-((0[1-9])|(1[012]))-((0[1-9])|([12]\d)|(3[01]))/,
-            "total|400-1000": 800,
-            "newadd|200-400": 300,
-          }
-        ]
-      });
-      if(mockData.error !== 0)return;
-      let data = mockData.data;
+      let data = mockChannelData();
+      if(data.error !== 0)return;
+      data = data.data;
       data.forEach((v,ii) => {
         initOption.xAxisData.push(v.time);
         for(let i=0; i<dataLen; i++){
