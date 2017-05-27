@@ -32,14 +32,14 @@ function deepCopy(p,c = {}){
 };
 
 function jsonp(url,config){  
-    var data = config.data || [];  
+    var data = config && config.data || [];  
     var paraArr=[],paraString='';//get请求的参数。  
     var urlArr;  
     var callbackName;//每个回调函数一个名字。按时间戳。  
     var script,head;//要生成script标签。head标签。  
     var supportLoad;//是否支持 onload。是针对IE的兼容处理。  
     var onEvent;//onload或onreadystatechange事件。  
-    var timeout = config.timeout || 0;//超时功能。  
+    var timeout = config && config.timeout || 0;//超时功能。  
     for(var i in data){  
         if(data.hasOwnProperty(i)){  
             paraArr.push(encodeURIComponent(i) + "=" +encodeURIComponent(data[i]));  
@@ -57,8 +57,8 @@ function jsonp(url,config){
     script.loaded = false;//为了实现IE下的onerror做的处理。JSONP的回调函数总是在script的onload事件（IE为onreadystatechange）之前就被调用了。因此我们在正向回调执行之时，为script标签添加一个属性，然后待到onload发生时，再检测有没有这个属性就可以判定是否请求成功，没有成功当然就调用我们的error。  
     //将回调函数添加到全局。  
     window[callbackName] = function(arg){  
-        var callback = config.callback;  
-        callback(arg);  
+        var callback = config && config.callback;  
+        callback && callback(arg);  
         script.loaded = true;  
     }  
     head = document.getElementsByTagName("head")[0];  

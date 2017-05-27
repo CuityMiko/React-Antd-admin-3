@@ -26,7 +26,13 @@ const channelListAction = {
 	}
 }
 
+const testAction = {
+	type: 'LOGIN_FETCH_REQUESTED',
+	payload: 'test001'
+}
+
 export {
 	loginAction,
+	testAction,
 	channelListAction
 }

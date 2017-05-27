@@ -14,10 +14,10 @@ class Head extends React.Component{
     // location.href = '/#/user/about/mylog';
   }
   render() {
-    const { onLogout }  = this.props;
+    const { onLogout, onTestAction }  = this.props;
     return (
     	<Header className="header">
-    	  <div className="logo mt-15 fl">
+    	  <div onClick={onTestAction} className="logo mt-15 fl">
     	    数据展示平台
     	  </div>
     	  <div className="user fr mt-15">

@@ -5,8 +5,9 @@
 */ 
 import React from 'react';
 import { connect } from 'react-redux'
-import { Layout } from 'antd';
-import { loginAction } from './actions'
+import { Layout } from 'antd'
+import PropTypes from 'prop-types'
+import { loginAction, testAction } from './actions'
 import Menu from './components/Menu'; //左侧菜单栏 
 import Header from './components/Header'; // 公共头部
 import Footer from './components/Footer'; // 公共底部
@@ -16,12 +17,17 @@ const { Content, Sider } = Layout;
 
 class AppCpt extends React.Component{
   render(){
-    const { onLogin, onLogout, login } = this.props;
+    const { onLogin, onLogout, onTestAction, login, dispatch } = this.props;
+    const { store } = this.context; //子组件拿到store的方法
+    console.log(store);
+    console.log(dispatch);
+    console.log(this.state);
+    // debugger
     return (
       login === 'in'
       ?
       <Layout>
-        <Header onLogout={onLogout} />
+        <Header onLogout={onLogout} onTestAction={onTestAction} />
         <Layout>
           <Sider 
             width={200} 
@@ -45,21 +51,31 @@ class AppCpt extends React.Component{
   }
 }
 
-function mapStateToProps(state, ownProps){ //负责输入逻辑
-  console.log('ownProps:',ownProps); //ownProps是一个对象，包裹params、location等属性 （使用react-router-redux包的情况下）
-  return {
-    login: state.login || localStorage.getItem('login') || loginAction.payload
-  }
+AppCpt.contextTypes = {
+  store: PropTypes.object
 }
-function mapDispatchToProps(dispatch){ //负责输出逻辑，即将用户对 UI 组件的操作映射成 Action,即发送action
+
+function mapStateToProps({login, saga}, ownProps){ //负责输入逻辑 
+  console.log('ownProps:',ownProps); //ownProps是一个对象，包裹params、location等属性 （使用react-router-redux包的情况下）
+  return {login, saga}
+}
+function mapDispatchToProps(dispatch, ownProps){ //负责输出逻辑，即将用户对 UI 组件的操作映射成 Action,即发送action
   return {
     onLogin(){
       loginAction.payload = 'in';
+      localStorage.setItem('login',loginAction.payload);
       dispatch(loginAction)
     },
     onLogout(){
       loginAction.payload = 'out';
       dispatch(loginAction)
+    },
+    onTestAction(){
+      // testAction.payload = 'test002';
+      dispatch({
+        type: 'LOGIN_FETCH_SUCCESSED',
+        payload: 'test002'
+      });
     }
   }
 }
