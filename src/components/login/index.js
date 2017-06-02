@@ -15,7 +15,7 @@ class Login extends React.Component{
 			}else{
 				console.log(values);
 				if(values.password === "btime" && values.username === "btime"){
-					this.props.onLogin();
+					this.props.dispatchLogin();
 				}else{
 					// 抛出账号或密码错误提示
 				}

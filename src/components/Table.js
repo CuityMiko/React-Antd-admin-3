@@ -1,4 +1,4 @@
-/*
+﻿/*
 ** EchartsAndTable.js 图表和表格JS
 ** auth:whr
 ** 实现图表和表格的类，实例化后即渲染基础框架，通过showData方法传入数据后渲染

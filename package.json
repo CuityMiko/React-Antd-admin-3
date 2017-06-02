@@ -1,11 +1,16 @@
-{
+﻿{
   "name": "app3",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "antd": "^2.8.3",
     "echarts-for-react": "^1.1.7",
+    "jsonp": "^0.2.1",
+    "mockjs": "^1.0.1-beta3",
+    "moment": "^2.18.1",
     "prop-types": "^15.5.8",
+    "rc-calendar": "^8.4.0",
+    "rc-radio": "^2.0.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.4",
@@ -13,12 +18,17 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0"
   },
+  "theme": {
+    "primary-color": "#00a2ae"
+  },
   "devDependencies": {
     "babel-plugin-import": "^1.1.1",
     "echarts": "^3.5.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
-    "react-scripts": "0.9.5"
+    "mockjs": "^1.0.1-beta3",
+    "react-scripts": "0.9.5",
+    "redux-saga": "^0.15.3"
   },
   "scripts": {
     "start": "react-scripts start",

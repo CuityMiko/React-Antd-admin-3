@@ -8,9 +8,10 @@ import React from 'react'
 import ReactEcharts from 'echarts-for-react'
 import { message } from 'antd'
 import Table from './Table'
+import api from '../models/api'
 import { config, getOption } from '../models/ctr-config'
 import { chartInit, getChartOption, setSeriesData } from './setEcharts'
-import { jsonp } from '../common/utils'
+import jsonp from 'jsonp'
 
 export default class CTR extends React.Component{
   constructor(){
@@ -25,8 +26,8 @@ export default class CTR extends React.Component{
     let that = this;
     let initOption = getOption();
     const loading = message.loading('加载中...');
-    jsonp('http://review.btime.cn:8360/index.php?ro=Highctrdata&ra=hctrs',{
-      callback(data){
+    jsonp(api.ctr, {}, function(err,data){
+      if(!err){
         loading();
         if(data.error !== 0) return;
         data = data.data;

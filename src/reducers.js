@@ -3,18 +3,19 @@
 ** auth:whr
 ** time:2017.4.27
 */
-export function reducer(state = {},action){
-	switch(action.type){
-		case 'LOGIN':
-			localStorage.setItem('login',action.payload);
-			return Object.assign({},state,{
-				login: action.payload
-			});
-		case 'CHANNEL_LIST':
-			return Object.assign({},state,{
-				channelState: action.payload
-			});
-		default:
-			return state
-	}
+
+import { channelFormAction, loginAction } from './actions'
+
+/* 注意： 
+** 函数命名时，必须与对应的 State 的属性名 同名
+*/
+
+export function login(state = localStorage.getItem('login') || loginAction.payload , action){
+	if(action.type !== 'LOGIN') return state;
+	return action.payload
+}
+
+export function channelForm(state = channelFormAction.payload, action){
+	if(action.type !== 'CHANNEL_FORM') return state;
+	return {...state, ...action.payload}
 }

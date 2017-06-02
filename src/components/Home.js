@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { Icon } from 'antd'
 import PropTypes from 'prop-types'
 
@@ -17,8 +17,8 @@ class Home extends React.Component{
     // location.href = '/#/business/channel';
   }
   render() {
-    console.log(this.context);
-    console.log(this.props);
+    // console.log(this.context);
+    // console.log(this.props);
     return (
       <div style={{fontSize: '14px'}}>
         <p>我是首页，目前没有内容，我还在开发当中<Icon style={{fontSize: '30px',color:'#3db8c1',marginLeft:'5px'}} type="tool" />...</p>

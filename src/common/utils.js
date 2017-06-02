@@ -32,14 +32,14 @@ function deepCopy(p,c = {}){
 };
 
 function jsonp(url,config){  
-    var data = config.data || [];  
+    var data = config && config.data || [];  
     var paraArr=[],paraString='';//get请求的参数。  
     var urlArr;  
     var callbackName;//每个回调函数一个名字。按时间戳。  
     var script,head;//要生成script标签。head标签。  
     var supportLoad;//是否支持 onload。是针对IE的兼容处理。  
     var onEvent;//onload或onreadystatechange事件。  
-    var timeout = config.timeout || 0;//超时功能。  
+    var timeout = config && config.timeout || 0;//超时功能。  
     for(var i in data){  
         if(data.hasOwnProperty(i)){  
             paraArr.push(encodeURIComponent(i) + "=" +encodeURIComponent(data[i]));  
@@ -53,12 +53,12 @@ function jsonp(url,config){
     paraArr.push('callback='+callbackName);  
     paraString = paraArr.join("&");  
     url = urlArr[0] + "?"+ paraString;  
-    script = document.createElement("script");  
+    script = document.createElement("script");
     script.loaded = false;//为了实现IE下的onerror做的处理。JSONP的回调函数总是在script的onload事件（IE为onreadystatechange）之前就被调用了。因此我们在正向回调执行之时，为script标签添加一个属性，然后待到onload发生时，再检测有没有这个属性就可以判定是否请求成功，没有成功当然就调用我们的error。  
     //将回调函数添加到全局。  
     window[callbackName] = function(arg){  
-        var callback = config.callback;  
-        callback(arg);  
+        var callback = config && config.callback;  
+        callback && callback(arg);  
         script.loaded = true;  
     }  
     head = document.getElementsByTagName("head")[0];  
@@ -96,9 +96,130 @@ function jsonp(url,config){
     }  
 }
 
+function tryget(o, path, v) {
+    var parts = path.split('.'),
+        part, len = parts.length;
+    for (var t = o, i = 0; i < len; ++i) {
+        part = parts[i];
+        if (part in t) {
+            t = t[parts[i]];
+        } else {
+            return v;
+        }
+    }
+    return t;
+}
+function formatDate(formatStr,dateObj){
+    /**
+    * ##str.format(formatString, ...)##
+    * @param {String} formatString
+    * @return {String}
+    *
+    * ```javascript
+    * //Simple
+    * str.format('{0}',2014) //Error
+    * str.format('{0}',[2014])
+    * => 2014
+    *
+    * str.format('{2}/{1}/{0}',[2014,6,3])
+    * => "3/6/2014"
+    *
+    * str.format('{2}/{1}/{0}',2014,6,3)
+    * => "3/6/2014"
+    *
+    * str.format("{year}-{month}-{date}",{year:2014,month:6,date:3})
+    * => "2014-6-3"
+    *
+    * //Advanced
+    * str.format('{2,2,0}/{1,2,0}/{0}',[2014,6,3]);
+    * => "03/06/2014"
+    *
+    * str.format('{2,2,!}/{1,2,*}/{0}',[2014,6,3]);
+    * => "!3/*6/2014"
+    *
+    * str.format("{year}-{month,2,0}-{date,2,0}",{year:2014,month:6,date:3})
+    * => "2014-06-03"
+    *
+    * str.format('{0,-5}',222014)
+    * => "22014"
+    *
+    * format('{0,6,-}{1,3,-}','bar','')
+    * => "---bar---"
+    * ```
+    */
+    var format = (function() {
+        function postprocess(ret, a) {
+            var align = parseInt(a.align),
+                absAlign = Math.abs(a.align),
+                result, retStr;
+
+            if (ret == null) {
+                retStr = '';
+            } else if (typeof ret == 'number') {
+                retStr = '' + ret;
+            } else {
+                throw new Error('Invalid argument type!');
+            }
+
+            if (absAlign === 0) {
+                return ret;
+            } else if (absAlign < retStr.length) {
+                result = align > 0 ? retStr.slice(0, absAlign) : retStr.slice(-absAlign);
+            } else {
+                result = Array(absAlign - retStr.length + 1).join(a.pad || format.DefaultPaddingChar);
+                result = align > 0 ? result + retStr : retStr + result;
+            }
+            return result;
+        }
+
+        function p(all) {
+            var ret = {},
+                p1, p2, sep = format.DefaultFieldSeperator;
+            p1 = all.indexOf(sep);
+            if (p1 < 0) {
+                ret.index = all;
+            } else {
+                ret.index = all.substr(0, p1);
+                p2 = all.indexOf(sep, p1 + 1);
+                if (p2 < 0) {
+                    ret.align = all.substring(p1 + 1, all.length);
+                } else {
+                    ret.align = all.substring(p1 + 1, p2);
+                    ret.pad = all.substring(p2 + 1, all.length);
+                }
+            }
+            return ret; //{index,pad,align}
+        }
+
+        return function(self, args) {
+            var len = arguments.length;
+            if (len > 2) {
+                args = Array.prototype.slice.call(arguments, 1);
+            } else if (len === 2) {
+                // args = [args];
+            } else if (len === 1) {
+                return self;
+            }
+            return self.replace(format.InterpolationPattern, function(all, m) {
+                var a = p(m),
+                    ret = tryget(args, a.index);
+                if (ret == null) ret = a.index;
+                return a.align == null && a.pad == null ? ret : postprocess(ret, a) || ret;
+            });
+        };
+    })();
+
+    format.DefaultPaddingChar = ' ';
+    format.DefaultFieldSeperator = ',';
+    format.InterpolationPattern = /\{(.*?)\}/g;
+
+    return format(formatStr, dateObj)
+}
+
 export {
   extend,
   deepCopy,
-  jsonp
+  jsonp,
+  formatDate
 }
 

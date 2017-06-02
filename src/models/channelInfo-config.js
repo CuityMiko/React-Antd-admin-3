@@ -1,4 +1,4 @@
-/*
+﻿/*
 ** channelInfo-config  频道、类目内容配置项
 ** ！！数据格式的更改必须要综合考虑每个使用此数据格式的组件，并做修改
 ** auth:whr
@@ -14,12 +14,12 @@ export const config = {//配置项
 
 const option = {
 	xAxisProp: {
-		prop: 'time', //后端返回数据中，x轴数据的属性名
+		prop: 'date', //后端返回数据中，x轴数据的属性名
 		name: config.axis[0]
 	}, 
 	xAxisData: [],
 	series: {
-	  props: ['total','newadd'], //不是用来渲染echarts用的数据，而是用来从返回值中取数据的属性名
+	  props: ['total','new_count'], //不是用来渲染echarts用的数据，而是用来从返回值中取数据的属性名
 	  names: ['总条数','新增条数'],
 	  datas: []
 	}

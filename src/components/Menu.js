@@ -77,7 +77,6 @@ class CusMenu extends React.Component {
     this.MenuChildRender = menuList.map(repeatRender); //缓存左侧菜单栏，避免每次都重新计算组合Menu组件
   }
   render() {
-    console.log(this.state)
     if(!this.MenuChildRender.length){
       this.renderMenu();
     }
