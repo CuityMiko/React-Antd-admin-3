@@ -8,7 +8,7 @@ by:   j-wanghairong@btime.com
 time: 2017.5.9
 
 ## 特别说明
--   master版本只是基础框架，react + react-router + antd，方便clone直接应用；方便根据实际项目需求拓展；
+-   v0版本是基础框架，react + react-router + antd，方便clone直接应用；方便根据实际项目需求拓展；
 -   查看react + react-router + antd + mockjs 应用实例，请查看[v2版本](https://github.com/whrweb/React-Antd-admin/tree/v2) 
 -   查看react + react-router + antd + mockjs + react-router-redux 应用实例， 请查看[v3版本](https://github.com/whrweb/React-Antd-admin/tree/v3) 
 -   v4版本正在开发，将会加入saga/fetch，敬请期待...
