@@ -22,7 +22,7 @@ class SearchFormCpt extends React.Component{
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.setRanksState = this.setRanksState.bind(this);
-		this.renderEachFormItem = this.renderEachFormItem.bind(this);
+		this.renderEachFormItem = this.renderEachFormItem.bind(this); 
 		this.onChangePicker = this.onChangePicker.bind(this);
 	}
 	handleChange(e){
@@ -33,9 +33,10 @@ class SearchFormCpt extends React.Component{
 		if(!e)return;
 		const values = e.split('-');
 		values.pop();
-		const index = values.length - 1;
-		const rank = values[0] || '0';
-		let rank1 = '0', rank2 = '0';
+		const index = values.length - 1,
+				rank = values[0] || '0';
+		let rank1 = '0', 
+				rank2 = '0';
 		this.props.form.resetFields(['nodes2Select']);//重新渲染类目之前需要清除该类目的输入值
 		switch(index){ //根据不同类目选择框触发的事件，分别执行不同代码
 			case 2:
@@ -72,9 +73,9 @@ class SearchFormCpt extends React.Component{
 	}
 	renderEachFormItem(){
 		let items = [];
-		const { channelForm } = this.props;
-		const { channelList, channelRanks } = channelForm;
-		const {rank, rank1} = channelRanks;
+		const { channelForm } = this.props,
+				{ channelList, channelRanks } = channelForm,
+				{rank, rank1} = channelRanks;
 		if(!channelList.length)return items;
 		const getCate1 = () => {
 			const rank1Category = channelList[rank].nodes;
@@ -92,8 +93,8 @@ class SearchFormCpt extends React.Component{
 		return items;
 	}
 	componentDidMount(){
-		const { channelForm } = this.props;
-		const { channelList } = channelForm; 
+		const { channelForm } = this.props,
+				{ channelList } = channelForm; 
 		if(channelList.length){
 			this.props.requestChannelList(channelList);
 		}else{
@@ -106,10 +107,10 @@ class SearchFormCpt extends React.Component{
 		}
 	}
 	render(){
-		const { getFieldDecorator } = this.props.form;
-		const { channelForm } = this.props;
-		const { channelList, channelPicker, channelRanks } = channelForm; 
-		const { rank } = channelRanks;
+		const { getFieldDecorator } = this.props.form,
+				{ channelForm } = this.props,
+				{ channelList, channelPicker, channelRanks } = channelForm,
+				{ rank } = channelRanks;
 		return (
 			<div>
 				<Form layout='inline'>
