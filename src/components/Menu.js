@@ -9,7 +9,6 @@ import { Link , IndexLink} from 'react-router'
 import { Menu, Icon} from 'antd';
 const { SubMenu } = Menu;
 
-
 function getOpenKeys(pathname){
   if(pathname.indexOf('/') === -1)return [];
   const arr = pathname.split('/');

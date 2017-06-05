@@ -7,6 +7,12 @@
 by:   j-wanghairong@btime.com
 time: 2017.5.9
 
+## 特别说明
+-   v0版本是基础框架，react + react-router + antd，方便clone直接应用；方便根据实际项目需求拓展；
+-   查看react + react-router + antd + mockjs 应用实例，请查看[v2版本](https://github.com/whrweb/React-Antd-admin/tree/v2) 
+-   查看react + react-router + antd + mockjs + react-router-redux 应用实例， 请查看[v3版本](https://github.com/whrweb/React-Antd-admin/tree/v3) 
+-   v4版本正在开发，将会加入saga/fetch，敬请期待...
+
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
 -   基于Antd UI 设计语言，可按需引入模块
@@ -15,6 +21,7 @@ time: 2017.5.9
 -   基于[mockjs](https://github.com/nuysoft/Mock/wiki),[mockjs官网](http://mockjs.com/)脱离后端，生成随机数据进行数据模拟测试
 -   浅度响应式设计
 -   动态加载路由对应内容组件js文件
+
 
 ## 开发构建
 
