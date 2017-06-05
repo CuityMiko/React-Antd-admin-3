@@ -1,4 +1,4 @@
-﻿/*
+/*
 ** index.js 入口JS文件 
 ** auth:whr
 ** time:2017.3.23

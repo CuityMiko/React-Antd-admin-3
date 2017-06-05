@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { Button, Form, Input, Row } from 'antd'
 import './index.less'
 const FormItem = Form.Item; 

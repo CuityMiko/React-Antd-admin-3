@@ -1,4 +1,4 @@
-﻿/*
+/*
 ** utils.js 工具JS
 ** auth:whr
 ** time:2017.3.23

@@ -1,6 +1,6 @@
-﻿/*
+/*
 ** auth:whr
-** time:2017.4.6
+** time:2017.4.6 
 */
 import React from 'react'
 import jsonp from 'jsonp'

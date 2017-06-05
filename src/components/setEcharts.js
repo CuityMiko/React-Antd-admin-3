@@ -1,4 +1,4 @@
-﻿/*
+/*
 ** setEcharts.js 
 ** auth:whr
 ** time:2017.3.23
