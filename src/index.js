@@ -5,14 +5,14 @@
 */
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, browserHistory } from 'react-router'
+import { Router, hashHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 import { Provider } from 'react-redux'
 import routes from './routes'
 import './index.less'
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 render(
 	<Provider store={store}>

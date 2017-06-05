@@ -64,7 +64,7 @@ class SearchFormCpt extends React.Component{
 			}
 			this.props.onSubmit();
 			this.isChange = false;
-			// console.log(values);
+			console.log(values);
 		})
 	}
 	onChangePicker(date, dateString){
@@ -75,18 +75,18 @@ class SearchFormCpt extends React.Component{
 		let items = [];
 		const { channelForm } = this.props,
 				{ channelList, channelRanks } = channelForm,
-				{rank, rank1} = channelRanks;
+				{rank, rank1, rank2} = channelRanks;
 		if(!channelList.length)return items;
 		const getCate1 = () => {
 			const rank1Category = channelList[rank].nodes;
 			if(!(rank1Category && rank1Category.length))return;
-			items.push(<MyFormItem form={this.props.form} nodes={rank1Category} rankkey={rank} cindex={1} onChangeItem={this.handleChange} key={'1cate'} />);
+			items.push(<MyFormItem form={this.props.form} nodes={rank1Category} curIndex={rank1} rankkey={rank} cindex={1} onChangeItem={this.handleChange} key={'1cate'} />);
 		}
 		const getCate2 = () => {
 			let rank2Category = rank1 && channelList[rank].nodes[rank1].nodes;
 			if(!(rank2Category && rank2Category.length))return;
 			let rank2_key = rank1 && rank + '-' + rank1;
-			items.push(<MyFormItem form={this.props.form} nodes={rank2Category} rankkey={rank2_key || '2not'} cindex={2} onChangeItem={this.handleChange} key={'2cate'} />)
+			items.push(<MyFormItem form={this.props.form} nodes={rank2Category} curIndex={rank2} rankkey={rank2_key || '2not'} cindex={2} onChangeItem={this.handleChange} key={'2cate'} />)
 		}
 		getCate1();
 		getCate2();

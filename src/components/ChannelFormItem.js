@@ -10,13 +10,13 @@ const {Option} = Select;
 export default class ChannelFormItem extends React.Component{
 	constructor(){
 		super();
-		this.handleChange = this.handleChange.bind(this)
+		this.handleChange = this.handleChange.bind(this);
 	}
 	handleChange(e){
 		this.props.onChangeItem(e);
 	}
 	render(){
-		const {cindex, rankkey, form} = this.props,
+		const {cindex, rankkey, form, curIndex = 0} = this.props,
 				{ getFieldDecorator } = form,
 				key = `${cindex}级类目`,
 				nodes = this.props.nodes;
@@ -24,7 +24,7 @@ export default class ChannelFormItem extends React.Component{
 			<FormItem key={key} label={key} >
 				{getFieldDecorator('nodes' + cindex + 'Select', {
 					// rules: [{ required: true, message: '此项为必选' }],
-					initialValue: nodes.length ? `${rankkey}-0-${nodes[0].code}` : ''
+					initialValue: nodes.length ? `${rankkey}-${curIndex}-${nodes[curIndex].code}` : ''
 				})(
 				  <Select showSearch style={{ width: 150 }} notFoundContent={'空值'} onChange={this.handleChange} >
 				    {

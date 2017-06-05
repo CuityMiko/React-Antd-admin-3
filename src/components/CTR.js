@@ -23,8 +23,8 @@ export default class CTR extends React.Component{
     }
   }
   setChartOption(){
-    let that = this;
-    let initOption = getOption();
+    let that = this,
+        initOption = getOption();
     const loading = message.loading('加载中...');
     jsonp(api.ctr, {}, function(err,data){
       if(!err){
@@ -49,12 +49,12 @@ export default class CTR extends React.Component{
     this.setChartOption();
   }
   addScale(_this){
-    const columns = _this.columns;
-    const dataSource = _this.dataSource;
+    const columns = _this.columns,
+        dataSource = _this.dataSource;
     let len = columns.length-1;
     for(let i=len; i>1; i--){
-      let key = columns[i].key + 'Scale';
-      let title = columns[i].title + '占比';
+      let key = columns[i].key + 'Scale',
+          title = columns[i].title + '占比';
       columns.splice(i+1,0,{
         dataIndex: key,
         key,
@@ -76,12 +76,7 @@ export default class CTR extends React.Component{
   render(){
     return (
       <div>
-        <ReactEcharts
-          option={this.state.chartOption} 
-          notMerge={true}
-          lazyUpdate={true}
-          theme={"theme_name"}
-        />
+        <ReactEcharts option={this.state.chartOption}  notMerge={true} lazyUpdate={true} theme={"theme_name"} />
         <Table willMount={this.addScale} columns={this.state.tableColumns} dataSource={this.state.tableDataSource} />
       </div>
     )

@@ -11,6 +11,7 @@
 //     error: // <bool>  指明该action是否是一个以 error 为负载的action
 //     meta: // <string>  action元数据， 包含解释该action含义的信息
 // }
+import { countLatsetDate } from './common/utils'
 
 const loginAction = {
 	type: 'LOGIN', 
@@ -28,17 +29,6 @@ const channelFormAction = {
 		channelList: [], //分类列表
 		channelPicker: countLatsetDate(10) //时间，默认获取最近10天的开始、结束日期
 	}
-}
-
-function countLatsetDate(n){ //最近n天的日期，返回值为数组，第一项是开始时间、第二项是结束时间
-	return [countDate(+new Date() - n*24*60*60*1000), countDate(+new Date())]
-}
-function countDate(timestamp){
-	const date = new Date(timestamp);
-	const year = date.getFullYear();
-	const month = date.getMonth() + 1;
-	const day = date.getDate();
-	return `${year}-${month}-${day}`
 }
 
 export {

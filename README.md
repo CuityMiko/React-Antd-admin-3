@@ -7,12 +7,6 @@
 by:   j-wanghairong@btime.com
 time: 2017.5.9
 
-## 特别说明
--   v0版本是基础框架，react + react-router + antd，方便clone直接应用；方便根据实际项目需求拓展；
--   查看react + react-router + antd + mockjs 应用实例，请查看[v2版本](https://github.com/whrweb/React-Antd-admin/tree/v2) 
--   查看react + react-router + antd + mockjs + react-router-redux 应用实例， 请查看[v3版本](https://github.com/whrweb/React-Antd-admin/tree/v3) 
--   v4版本正在开发，将会加入saga/fetch，敬请期待...
-
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
 -   基于Antd UI 设计语言，可按需引入模块
@@ -22,6 +16,8 @@ time: 2017.5.9
 -   浅度响应式设计
 -   动态加载路由对应内容组件js文件
 
+### 其他介绍
+-   [echarts-for-react](https://github.com/hustcc/echarts-for-react) 一个简单的 echarts(v3.0) 的 react 封装
 
 ## 开发构建
 
@@ -58,7 +54,11 @@ time: 2017.5.9
 
 安装依赖
 
-    npm install 或者 yarn install
+-   npm install 或者 yarn install
+
+-   用/assets文件夹里的webpack.config.*.js文件替换 /node_modules/react-scripts/config目录下对应文件，解决两个问题：
+    1，antd框架引用模块问题；
+    2，自定义主题
     
 开发
 
@@ -96,13 +96,20 @@ npm run build
     ```
 -   Q：怎么使用less加载器加载.less文件
     
-    A：在node_modules/react-scripts/config/webpack.config.dev.js文件中,在module.loaders对象中做相应增加test和loader配置，
+    A：在node_modules/react-scripts/config/webpack.config.*.js文件中,在module.loaders对象中做相应增加test和loader配置，
        然后在module.loaders[0].exclude对象中增加/\.less$/
 
+-   Q:  怎么自定义主题颜色？
+
+    A：在node_modules/react-scripts/config/webpack.config.*.js文件中，module.loaders中，找到less项，修改loader为
+        ```javascript
+        'style!css!postcss!less?{modifyVars:{"@primary-color":"#00a2ae"}}'
+        ```
+      按需修改颜色值即可
 
 ## 其他
 
--   修改了安装目录下，react-scripts文件夹中的 webpack.config.dev.js 和 webpack.config.prod.js,(看下图)(见根目录下assets文件夹),达到使用import引入antd模块，即可同时引入antd对应模块的组件和样式文件。另，可通过修改安装目录下antd/lib文件夹下对应的文件，完成自定义样式的需求。
+-   修改了安装目录下，react-scripts文件夹中的 webpack.config.*.js，
 
     ![](assets/react-scripts.png)
 

@@ -11,8 +11,8 @@ const { Header } = Layout;
 
 class Head extends React.Component{
   toUserInfo(){
-    this.context.router.push('/user/about/mylog');
-    // location.href = '/#/user/about/mylog';
+    // this.context.router.push('/user/about/mylog');
+    location.href = '/#/user/about/mylog';
   }
   render() {
     const { dispatchLogout }  = this.props;

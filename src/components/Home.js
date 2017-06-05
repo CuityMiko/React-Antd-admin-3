@@ -9,12 +9,12 @@ class Home extends React.Component{
     this.goChannelPath = this.goChannelPath.bind(this);
   }
   goCtrPath(){
-    this.context.router.push('/business/ctr'); //手动路由跳转
-    // location.href = '/#/business/ctr';
+    // this.context.router.push('/business/ctr'); //手动路由跳转
+    location.href = '/#/business/ctr';
   }
   goChannelPath(){
-    this.context.router.push('/business/channel'); //手动路由跳转
-    // location.href = '/#/business/channel';
+    // this.context.router.push('/business/channel'); //手动路由跳转
+    location.href = '/#/business/channel';
   }
   render() {
     // console.log(this.context);

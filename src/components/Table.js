@@ -40,9 +40,6 @@ export default class Tabler extends React.Component{
     }
     this.dataSource = dataSource;
   }
-  componentDidMount(){
-    this.firstLoad = false;    
-  }
   render(){
     this.loading = true;
     const { columns, dataSource, willMount } = this.props;
@@ -50,7 +47,10 @@ export default class Tabler extends React.Component{
       this.loading = false;
       this.getTableColumns(columns); //此处x、y相对的是echart图表的x/y轴
       this.getTableDataSource(dataSource);
-      if(this.firstLoad && willMount)willMount(this);//自定义的渲染前的生命周期钩子
+      if(this.firstLoad && willMount){
+        this.firstLoad = false;
+        willMount(this);//自定义的渲染前的生命周期钩子
+      }
     }
     return (
       <div>
