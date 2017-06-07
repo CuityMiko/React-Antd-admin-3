@@ -16,13 +16,12 @@ export default class ChannelFormItem extends React.Component{
 		this.props.onChangeItem(e);
 	}
 	render(){
-		const {cindex, rankkey, form, curIndex = 0} = this.props,
-				{ getFieldDecorator } = form,
-				key = `${cindex}级类目`,
-				nodes = this.props.nodes;
+		const {cindex, rankkey, form, curIndex = 0, nodes} = this.props,
+					{ getFieldDecorator } = form,
+					key = `${cindex}级类目`;
 		return (
 			<FormItem key={key} label={key} >
-				{getFieldDecorator('nodes' + cindex + 'Select', {
+				{getFieldDecorator(`nodes${cindex}Select`, {
 					// rules: [{ required: true, message: '此项为必选' }],
 					initialValue: nodes.length ? `${rankkey}-${curIndex}-${nodes[curIndex].code}` : ''
 				})(

@@ -9,14 +9,14 @@ import { Router, hashHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 import { Provider } from 'react-redux'
-import routes from './routes'
+import routes  from './routes'
 import './index.less'
 
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-	<Provider store={store}>
-		<Router history={ history } routes={routes}></Router>
+	<Provider store={ store }>
+		<Router history={ history } routes={ routes }></Router>
 	</Provider>,
 	document.getElementById('root')
 );

@@ -8,53 +8,28 @@ import React from 'react';
 import { Table } from 'antd';
 
 export default class Tabler extends React.Component{
-  constructor(){
-    super();
-    this.firstLoad = true;
-  }
-  getTableColumns({xAxisProp,series}){
-    if(this.columns){
-      return;
+  addPropKey(data){
+    if(!this.signNum)this.signNum = 1;
+    for(let v of data){
+      v.key = ++this.signNum
     }
-    const {name: xName, prop: xProp} = xAxisProp;
-    const {names: yNames, props: yProps} = series;
-    const columns = [];
-    columns.push({
-      title: xName,
-      dataIndex: xProp,
-      key: xProp
-    })
-    yProps.forEach((v,i) => {
-      columns.push({
-        title: yNames[i],
-        dataIndex: v,
-        key: v
-      })
-    })
-    this.columns = columns;
-  }
-  getTableDataSource(dataSource){
-    if(!this.keyNum)this.keyNum = 1;
-    for(let v of dataSource){
-      v.key = ++this.keyNum
-    }
-    this.dataSource = dataSource;
+    return data
   }
   render(){
     this.loading = true;
-    const { columns, dataSource, willMount } = this.props;
+    let { columns, dataSource, willMount } = this.props;
     if(dataSource && dataSource.length){
+      if(!dataSource[0].key){
+        this.addPropKey(dataSource)
+      }
       this.loading = false;
-      this.getTableColumns(columns); //此处x、y相对的是echart图表的x/y轴
-      this.getTableDataSource(dataSource);
-      if(this.firstLoad && willMount){
-        this.firstLoad = false;
-        willMount(this);//自定义的渲染前的生命周期钩子
+      if(willMount){
+        willMount({ columns, dataSource });//自定义的渲染前的生命周期钩子
       }
     }
     return (
       <div>
-        <Table className="clearfix" columns={this.columns || []} dataSource={this.dataSource || []} loading={this.loading} />
+        <Table className="clearfix" columns={columns || []} dataSource={dataSource || []} loading={this.loading} />
       </div>
     )
   }

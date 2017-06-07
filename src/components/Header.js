@@ -7,15 +7,25 @@ import React from 'react'
 import { Layout, Icon } from 'antd';
 import { projectInfo } from '../models/config'
 import PropTypes from 'prop-types'
+import { loginAction } from '../actions'
 const { Header } = Layout;
 
 class Head extends React.Component{
+  constructor(){
+    super();
+    this.dispatchLogout = this.dispatchLogout.bind(this);
+  }
   toUserInfo(){
     // this.context.router.push('/user/about/mylog');
     location.href = '/#/user/about/mylog';
   }
+  dispatchLogout(){
+    const { store } = this.context;
+    localStorage.setItem('login','out');
+    loginAction.payload = 'out';
+    store.dispatch(loginAction);
+  }
   render() {
-    const { dispatchLogout }  = this.props;
     return (
     	<Header className="header">
     	  <div className="logo mt-15 fl">
@@ -24,7 +34,7 @@ class Head extends React.Component{
     	  </div>
     	  <div className="user fr mt-15">
     	  	<span className="user-name" onClick={this.toUserInfo}>{ projectInfo.userName }</span>
-    	    <div className="icon-logout ml-15" onClick={ dispatchLogout }>
+    	    <div className="icon-logout ml-15" onClick={ this.dispatchLogout }>
     	    	<Icon type="logout" style={{color:'#fff',fontSize:'22px'}}/>
     	    </div>
     	  </div>
@@ -34,7 +44,8 @@ class Head extends React.Component{
 }
 
 Head.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
+  store: PropTypes.object
 }
 
 export default Head

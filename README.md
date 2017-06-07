@@ -32,7 +32,6 @@ time: 2017.5.9
 │ │ └── Menu.js      # 左侧菜单组件
 │ ├── /models/       # 数据模型
 │ ├── /common/       # 通用函数
-│ │ ├── jsonp.js     # 跨域请求
 │ │ └── utils.js     # 工具函数
 │ ├── routes.js      # 路由配置
 │ ├── actions.js     # redux 的 actions管理
@@ -41,7 +40,7 @@ time: 2017.5.9
 │ ├── app.js         # 整体布局控制
 │ ├── mock.js        # 脱离后端进行数据模拟测试
 │ ├── index.less     # index样式文件
-│ └──index.js        # 入口js文件
+│ └── index.js        # 入口js文件
 └── package.json     # 项目信息
 ```
 
@@ -52,15 +51,18 @@ time: 2017.5.9
 
 #### 快速开始
 
-安装依赖
+安装依赖：
 
--   npm install 或者 yarn install
+npm install 或者 yarn install
 
--   用/assets文件夹里的webpack.config.*.js文件替换 /node_modules/react-scripts/config目录下对应文件，解决两个问题：
+
+任务文件替换：
+
+用/assets文件夹里的webpack.config.*.js文件替换 /node_modules/react-scripts/config目录下对应文件，解决两个问题：
     1，antd框架引用模块问题；
     2，自定义主题
     
-开发
+开发：
 
 ```bash
 npm start    

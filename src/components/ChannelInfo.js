@@ -11,23 +11,23 @@ import ReactEcharts from 'echarts-for-react'
 import api from '../models/api'
 import ChannelForm from './ChannelForm.js'
 import Table from './Table'
-import { chartInit, getChartOption } from './setEcharts'
-import { config, getOption } from '../models/channelInfo-config'
+import { config, getOption, mapDataToOption } from '../models/channelInfo-config'
+import { getTableColumns } from './setEcharts'
 
 class ChannelInfo extends React.Component{
   constructor(){
     super();
     this.state = {
-      chartOption: chartInit(config),
-      tableColumns: [],
-      tableDataSource: []
+      chartOption: getOption(),
+      columns: getTableColumns(config),
+      dataSource: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.setChartOption = this.setChartOption.bind(this);
+    this.setRenderData = this.setRenderData.bind(this);
     this.getParmes = this.getParmes.bind(this);
   }
   handleSubmit(){// values为 提交所选频道、分类表单的值
-    this.setChartOption();
+    this.setRenderData();
   }
   getParmes(){
     const { channelForm } = this.props,
@@ -37,28 +37,18 @@ class ChannelInfo extends React.Component{
         categoryid = channelList[rank].nodes[rank1].nodes[rank2].code || '';
     return `?channelid=${channelid}&category=${categoryid}&start_date=${channelPicker[0] || ''}&end_date=${channelPicker[1] || ''}`
   }
-  setChartOption(){
+  setRenderData(){
     this.isFirstRequest = false;
-    let that = this,
-        unloading = message.loading('加载中...'),
-        initOption = getOption();
-    const props = initOption.series.props,
-        dataLen = props.length;
+    let unloading = message.loading('加载中...');
     jsonp(api.requestChannelinfoDataApi + this.getParmes(), {}, (err,data) => {
       if(data.code !== 0)return;
-      data = data.data;
-      data = data.list;
-      data.forEach((v,ii) => {
-        initOption.xAxisData.push(v.date);
-        for(let i=0; i<dataLen; i++){
-          initOption.series.datas[i].push(v[props[i]])
-        }
-      })
-      that.setState((preState) => {
+      data = data && data.data && data.data.list;
+      if(!data || !data.length)return;
+      this.setState((preState) => {
+        const chartOption = mapDataToOption(preState.chartOption, data);
         return {
-          chartOption: getChartOption(preState,initOption).option,
-          tableColumns: initOption,
-          tableDataSource: data
+          chartOption,
+          dataSource: data
         }
       })
       unloading();
@@ -68,7 +58,7 @@ class ChannelInfo extends React.Component{
     const { channelForm } = this.props,
         { channelList } = channelForm;
     if(channelList.length && this.isFirstRequest !== false){
-      this.setChartOption();
+      this.setRenderData();
       return true
     }
   }
@@ -85,8 +75,8 @@ class ChannelInfo extends React.Component{
     return (
       <ChannelForm option={this.state.chartOption} onSubmit={this.handleSubmit}>
         <div style={{marginTop:30}}>
-          <ReactEcharts option={this.state.chartOption}  notMerge={true} lazyUpdate={true} />
-          <Table columns={this.state.tableColumns} dataSource={this.state.tableDataSource} />
+          <ReactEcharts option={this.state.chartOption} />
+          <Table columns={this.state.columns} dataSource={this.state.dataSource} />
         </div>
       </ChannelForm>    
     )

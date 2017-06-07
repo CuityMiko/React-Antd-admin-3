@@ -4,18 +4,18 @@
 ** auth:whr
 ** time:2017.4.24
 */
-import { deepCopy } from '../common/utils'
+import { fillDataSite, getInitOption, mapDataToOption as initMapDataToOption } from './initEchartsConfig'
 
-export const config = { //图表配置项，不配置则不显示
+const option = { //图表配置项，不配置则不显示
   title:'高CTR数据量统计',
   subtext:'不同时间段，不同长度的标题数量',
   axis: ['时间','数量']
 }
 
-const option = {
+export const config = fillDataSite({
 	xAxisProp: {
 		prop: 'time', //后端返回数据中，x轴数据的属性名
-		name: config.axis[0]
+		name: option.axis[0]
 	}, 
 	xAxisData: [],
 	series: {
@@ -23,8 +23,11 @@ const option = {
 	  names: ['内容总量','标题数超30','标题数超25','标题数超22'],
 	  datas: []
 	}
-};
-for(let i=0; i<option.series.props.length; i++){ //为option的series.datas 增加跟props相应数量的空数组
-  option.series.datas.push([])
+});
+
+export function mapDataToOption(preOption, newData){
+	return initMapDataToOption(preOption, newData, Object.assign({}, config))
 }
-export const getOption = (opt = {}) => deepCopy(option,opt)
+
+export const getOption = (opt = {}) => getInitOption(Object.assign({}, option, opt))
+

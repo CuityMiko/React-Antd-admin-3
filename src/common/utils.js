@@ -33,21 +33,22 @@ function deepCopy(p,c = {}){
 
 const countLatsetDate = (function(){ //最近n天的日期，返回值为数组，第一项是开始时间、第二项是结束时间
     const day = 24*60*60*1000; //1天的毫秒数
-    function countDate(timestamp){
-        const date = new Date(timestamp),
-                year = date.getFullYear(),
-                month = date.getMonth() + 1,
-                day = date.getDate();
-        return `${year}-${month}-${day}`
-    }
     return (n) => { 
-        return [countDate(+new Date() - n*day), countDate(+new Date())]
+        return [formatDate(+new Date() - n*day), formatDate(+new Date())]
     }
 }());
+function formatDate(timestamp){
+    const date = new Date(timestamp),
+            year = date.getFullYear(),
+            month = date.getMonth() + 1,
+            day = date.getDate();
+    return `${year}-${month}-${day}`
+}
 
 export {
   extend,
   deepCopy,
-  countLatsetDate
+  countLatsetDate,
+  formatDate
 }
 

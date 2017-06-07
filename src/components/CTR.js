@@ -9,37 +9,31 @@ import ReactEcharts from 'echarts-for-react'
 import { message } from 'antd'
 import Table from './Table'
 import api from '../models/api'
-import { config, getOption } from '../models/ctr-config'
-import { chartInit, getChartOption, setSeriesData } from './setEcharts'
+import { config, getOption, mapDataToOption } from '../models/ctr-config'
+import { getTableColumns } from './setEcharts'
 import jsonp from 'jsonp'
 
 export default class CTR extends React.Component{
   constructor(){
     super();
     this.state = {
-      chartOption: chartInit(config),
-      tableColumns: [],
-      tableDataSource: []
+      chartOption: getOption(),
+      columns: getTableColumns(config),
+      dataSource: []
     }
   }
   setChartOption(){
-    let that = this,
-        initOption = getOption();
     const loading = message.loading('加载中...');
-    jsonp(api.ctr, {}, function(err,data){
+    jsonp(api.ctr, {}, (err,data) => {
       if(!err){
         loading();
         if(data.error !== 0) return;
         data = data.data;
-        data.forEach((v,ii) => {
-          setSeriesData({initOption, v});
-        })
-        that.setState((preState,props) => {
-          let chartOption = getChartOption(preState,initOption).option;
+        this.setState((preState,props) => {
+          let chartOption = mapDataToOption(preState.chartOption, data);
           return {
-            chartOption: chartOption,
-            tableColumns: initOption,
-            tableDataSource: data
+            chartOption,
+            dataSource: data
           }
         });
       }
@@ -48,9 +42,7 @@ export default class CTR extends React.Component{
   componentDidMount(){
     this.setChartOption();
   }
-  addScale(_this){
-    const columns = _this.columns,
-        dataSource = _this.dataSource;
+  addScale({ columns, dataSource }){
     let len = columns.length-1;
     for(let i=len; i>1; i--){
       let key = columns[i].key + 'Scale',
@@ -61,14 +53,14 @@ export default class CTR extends React.Component{
         title
       })
     }
-    dataSource.forEach((v,i) => {
+    for(let v of dataSource){
       let total = v.total;
       for(let p in v){
         if(/pass/i.test(p)){
           v[p+'Scale'] = setScale(v[p]/total)
         }
       }
-    })
+    }
     function setScale(val) {
       return (val*100).toFixed(0) + '%';
     }
@@ -77,7 +69,7 @@ export default class CTR extends React.Component{
     return (
       <div>
         <ReactEcharts option={this.state.chartOption}  notMerge={true} lazyUpdate={true} theme={"theme_name"} />
-        <Table willMount={this.addScale} columns={this.state.tableColumns} dataSource={this.state.tableDataSource} />
+        <Table willMount={this.addScale} columns={this.state.columns} dataSource={this.state.dataSource} />
       </div>
     )
   }

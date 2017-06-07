@@ -54,7 +54,7 @@ class SearchFormCpt extends React.Component{
 	handleSubmit(e){
 		e.preventDefault();
 		if(!this.isChange){ //如果当前没有改变选择框，则不可重复 提交表单
-			message.warning('请更改"筛选项"后再提交表单');
+			message.warning('请更改"筛选项"后再进行搜索');
 			return;
 		}
 		this.props.form.validateFields((err,values) => { //验证表单通过后的回调，第二个参数是当前表单的值

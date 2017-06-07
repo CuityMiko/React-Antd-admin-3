@@ -3,7 +3,6 @@
 ** auth:whr
 ** time:2017.4.6
 */
-
 let menuList = [
   {
     path:'business',
@@ -63,12 +62,12 @@ function addFatherPath(v,i){
 	}
 }
 function eachChild(v){
-	v.child.forEach((vv,ii) => {
-		vv.path = v.path + '/' + vv.path;
-		if(vv.child && vv.child.length){
-			eachChild(vv);
-		}
-	})
+  for(let vv of v.child){
+    vv.path = v.path + '/' + vv.path;
+    if(vv.child && vv.child.length){
+      eachChild(vv);
+    }
+  }
 }
 menuList.forEach(addFatherPath);
 

@@ -12,8 +12,8 @@ export default class Foot extends React.Component{
   render() {
     return (
     	<Footer className="footer text-center">
-          { projectInfo.describe }
-        </Footer>
+        { projectInfo.describe }
+      </Footer>
     )
   }
 }

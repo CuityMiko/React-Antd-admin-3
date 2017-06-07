@@ -4,23 +4,24 @@
 ** auth:whr
 ** time:2017.4.24
 */
+
 import { fillDataSite, getInitOption, mapDataToOption as initMapDataToOption } from './initEchartsConfig'
 
-const option = {//配置项
-  title: '频道/类目内容条数',
-  subtext: '分别展示每天总条数和新增条数',
-  axis: ['时间','条数'], //必须是数组，第一个是X轴名称，第二个是Y轴名称
+export const option = {//配置项
+  title: '数据展示DEMO',
+  subtext: '动态的添加每一条新增数据',
+  axis: ['时间','数量'], //必须是数组，第一个是X轴名称，第二个是Y轴名称
 }
 
 export const config = fillDataSite({
 	xAxisProp: {
-		prop: 'date', //后端返回数据中，x轴数据的属性名
+		prop: 'time', //后端返回数据中，x轴数据的属性名
 		name: option.axis[0]
 	}, 
 	xAxisData: [],
 	series: {
-	  props: ['total','new_count'], //不是用来渲染echarts用的数据，而是用来从返回值中取数据的属性名
-	  names: ['总条数','新增条数'],
+	  props: ['t1','t2','t3'], //不是用来渲染echarts用的数据，而是用来从返回值中取数据的属性名
+	  names: ['第1条数据','第2条数据','第3条数据',],
 	  datas: []
 	}
 });
