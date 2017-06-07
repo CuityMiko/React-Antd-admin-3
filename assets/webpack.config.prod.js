@@ -185,7 +185,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"#1DA57A"}}'
+        loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"#00a2ae"}}'
       },
       // "file" loader for svg
       {
