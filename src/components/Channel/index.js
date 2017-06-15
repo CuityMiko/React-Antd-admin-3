@@ -7,12 +7,12 @@ import React from 'react'
 import { message } from 'antd'
 import { connect } from 'react-redux'
 import jsonp from 'jsonp'
-import ReactEcharts from 'echarts-for-react'
-import api from '../models/api'
-import ChannelForm from './ChannelForm.js'
-import Table from './Table'
-import { config, getOption, mapDataToOption } from '../models/channelInfo-config'
-import { getTableColumns } from './setEcharts'
+import Echarts from '../Echarts'
+import api from '../../models/api'
+import ChannelForm from './Form'
+import Table from '../Table'
+import { config, getOption, mapDataToOption } from '../../models/channelInfo-config'
+import { getTableColumns } from '../setEcharts'
 
 class ChannelInfo extends React.Component{
   constructor(){
@@ -31,11 +31,11 @@ class ChannelInfo extends React.Component{
   }
   getParmes(){
     const { channelForm } = this.props,
-        { channelPicker, channelRanks, channelList } = channelForm,
-        { rank, rank1, rank2 } = channelRanks,
-        channelid = channelList[rank].code || '',
-        categoryid = channelList[rank].nodes[rank1].nodes[rank2].code || '';
-    return `?channelid=${channelid}&category=${categoryid}&start_date=${channelPicker[0] || ''}&end_date=${channelPicker[1] || ''}`
+        { channelPicker, ranks, channelList } = channelForm,
+        { rank0, rank1, rank2 } = ranks,
+        channelid = channelList[rank0].code || '',
+        categoryid = channelList[rank0].nodes[rank1].nodes[rank2].code || '';
+    return `?channelid=${channelid.split('-')[0]}&category=${categoryid.split('-')[0]}&start_date=${channelPicker[0] || ''}&end_date=${channelPicker[1] || ''}`
   }
   setRenderData(){
     this.isFirstRequest = false;
@@ -73,9 +73,9 @@ class ChannelInfo extends React.Component{
   }
   render(){
     return (
-      <ChannelForm option={this.state.chartOption} onSubmit={this.handleSubmit}>
+      <ChannelForm onSubmit={this.handleSubmit}>
         <div style={{marginTop:30}}>
-          <ReactEcharts option={this.state.chartOption} />
+          <Echarts option={this.state.chartOption} />
           <Table columns={this.state.columns} dataSource={this.state.dataSource} />
         </div>
       </ChannelForm>    

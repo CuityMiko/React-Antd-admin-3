@@ -4,7 +4,7 @@
 ** auth:whr
 ** time:2017.4.24
 */
-import { fillDataSite, getInitOption, mapDataToOption as initMapDataToOption } from './initEchartsConfig'
+import { fillDataSite, getInitOption, mapDataToOption as initMapDataToOption } from './initEcharts-config'
 
 const option = { //图表配置项，不配置则不显示
   title:'高CTR数据量统计',

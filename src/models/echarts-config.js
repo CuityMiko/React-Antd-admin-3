@@ -5,7 +5,7 @@
 ** time:2017.4.24
 */
 
-import { fillDataSite, getInitOption, mapDataToOption as initMapDataToOption } from './initEchartsConfig'
+import { fillDataSite, getInitOption, mapDataToOption as initMapDataToOption } from './initEcharts-config'
 
 export const option = {//配置项
   title: '数据展示DEMO',

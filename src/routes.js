@@ -4,8 +4,8 @@
 ** time:2017.4.6
 */
 import NotFound from './components/NotFound'
-import App from './App.js' 
-import Home from './components/Home.js'
+import App from './App' 
+import Home from './components/Home'
 
 export default {
 	path: '/',
@@ -19,7 +19,7 @@ export default {
 	  			path: 'ctr',
 	  			getComponent(nextState,cb){
 	  				require.ensure([], (require) => {
-	  				  cb(null, require('./components/CTR.js').default)
+	  				  cb(null, require('./components/CTR').default)
 	  				}, 'business')
 	  			}
 	  		},
@@ -27,7 +27,7 @@ export default {
 	  			path: 'channel',
 	  			getComponent(nextState,cb){
 	  				require.ensure([], (require) => {
-	  				  cb(null, require('./components/ChannelInfo.js').default)
+	  				  cb(null, require('./components/Channel').default)
 	  				}, 'business')
 	  			}
 	  		}
@@ -43,7 +43,7 @@ export default {
 	  					path: 'mylog',
 	  					getComponent(nextState,cb){
 	  						require.ensure([], (require) => {
-	  						  cb(null, require('./components/About.js').default)
+	  						  cb(null, require('./components/About').default)
 	  						}, 'about')
 	  					}
 	  				}
@@ -56,7 +56,7 @@ export default {
 	  					path: 'info',
 	  					getComponent(nextState,cb){
 	  						require.ensure([], (require) => {
-	  						  cb(null, require('./components/Seting-info.js').default)
+	  						  cb(null, require('./components/Seting').default)
 	  						}, 'seting')
 	  					}
 	  				}

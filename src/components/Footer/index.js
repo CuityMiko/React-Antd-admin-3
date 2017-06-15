@@ -5,7 +5,7 @@
 */
 import React from 'react'
 import { Layout } from 'antd';
-import { projectInfo } from '../models/config'
+import { projectInfo } from '../../models/config'
 const { Footer } = Layout;
 
 export default class Foot extends React.Component{

@@ -5,9 +5,9 @@
 */
 import React from 'react'
 import ReactEcharts from 'echarts-for-react'
-import { getOption, mapDataToOption } from '../models/echarts-config'
-import { mockHomeEcharts } from '../mock'
-import { formatDate } from '../common/utils'
+import { getOption, mapDataToOption } from '../../models/echarts-config'
+import { mockHomeEcharts } from '../../mock'
+import { formatDate } from '../../common/utils'
 
 export default class Foot extends React.Component{
 	constructor(){
@@ -39,14 +39,14 @@ export default class Foot extends React.Component{
 				v.t1 = initMockData[i].t1;
 				v.t2 = initMockData[i].t2;
 				v.t3 = initMockData[i].t3;
-				v.time = formatDate(v.time);
+				v.time = formatDate(v.time, 'h:m:s');
 			}
 			this.setState(preState => {
 				return {
 					option: mapDataToOption(preState.option, newData)
 				}
 			})
-		},1500)
+		},1000)
 	}
   render() {
     return (

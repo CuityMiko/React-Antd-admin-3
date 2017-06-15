@@ -5,16 +5,13 @@
 */
 import React from 'react'
 import { Layout, Icon } from 'antd';
-import { projectInfo } from '../models/config'
+import { projectInfo } from '../../models/config'
 import PropTypes from 'prop-types'
-import { loginAction } from '../actions'
+import { loginAction } from '../../actions'
+import './index.less'
 const { Header } = Layout;
 
 class Head extends React.Component{
-  constructor(){
-    super();
-    this.dispatchLogout = this.dispatchLogout.bind(this);
-  }
   toUserInfo(){
     // this.context.router.push('/user/about/mylog');
     location.href = '/#/user/about/mylog';
@@ -29,7 +26,7 @@ class Head extends React.Component{
     return (
     	<Header className="header">
     	  <div className="logo mt-15 fl">
-          <img src={ projectInfo.logo } alt="logo" style={{verticalAlign: 'middle', marginRight: '15px', position: 'relative', top: '-2px'}} />
+          <img src={ projectInfo.logo } alt="logo" />
     	    { projectInfo.title }
     	  </div>
     	  <div className="user fr mt-15">

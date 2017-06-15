@@ -37,12 +37,20 @@ const countLatsetDate = (function(){ //最近n天的日期，返回值为数组�
         return [formatDate(+new Date() - n*day), formatDate(+new Date())]
     }
 }());
-function formatDate(timestamp){
+function formatDate(timestamp, format){
     const date = new Date(timestamp),
             year = date.getFullYear(),
             month = date.getMonth() + 1,
-            day = date.getDate();
-    return `${year}-${month}-${day}`
+            day = date.getDate(),
+            hour = date.getHours(),
+            min = date.getMinutes(),
+            sec = date.getSeconds();
+    switch(format){
+    	case 'h:m:s':
+    		return `${hour}:${min}:${sec}`;
+    	default:
+    		return `${year}-${month}-${day}`
+    }
 }
 
 export {

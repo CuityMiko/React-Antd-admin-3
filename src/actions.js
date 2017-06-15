@@ -21,8 +21,8 @@ const loginAction = {
 const channelFormAction = {
 	type: 'CHANNEL_FORM',
 	payload: {
-		channelRanks: {
-			rank: '0', //频道 标记当前选择的是第几个，0代表第一个
+		ranks: {
+			rank0: '0', //频道 标记当前选择的是第几个，0代表第一个
 			rank1: '0', //1级类目 标记当前选择的是第几个，0代表第一个，null表示未选择
 			rank2: '0', //2级类目 
 		},

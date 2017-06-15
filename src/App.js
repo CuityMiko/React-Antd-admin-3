@@ -6,12 +6,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
+const { Content, Sider } = Layout;
 import Menu from './components/Menu'; //左侧菜单栏 
 import Header from './components/Header'; // 公共头部
 import Footer from './components/Footer'; // 公共底部
 import menuList from './models/menuList'; //左侧菜单栏的菜单数据
-import Login from './components/login'
-const { Content, Sider } = Layout;
+import Login from './components/Login'
 
 class AppCpt extends React.Component{
   render(){

@@ -1,0 +1,40 @@
+.header .logo{
+  width: 300px;
+  height: 30px;
+  line-height: 28px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+.header .logo >img{
+  vertical-align: middle;
+  margin-right: 15px;
+  position: relative;
+  top: -2px
+}
+.header .user{
+  line-height: normal;
+  cursor: pointer;
+  .user-name{
+    color: #fff;
+    font-size: 16px;
+    &:hover{
+      color: #ebf8f9;
+    }
+  }
+  .icon-logout{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 39px;
+    transition: all 0.3s;
+    border-radius: 50%;
+    &:hover{
+      transform: scale(1.2,1.2);
+      background: #3db8c1;
+      opacity: 0.9;
+    }
+  }
+}

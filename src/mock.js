@@ -8,12 +8,10 @@ import Mock from 'mockjs'
 //首页展示DEMO图表
   // let _date = +new Date();
 const mockHomeEcharts = (n = 0) => {
-  const oneDay = 1000*60*60*24;
-  const date = +new Date() - oneDay*200 + n*oneDay;
   const rules = {
-    "data|10": [
+    "data|40": [
       {
-        [`time|+${oneDay}`]: date,
+        'time|+1000': +new Date(),
         "t1|1200-1600": 1400,
         "t2|600-1000": 800,
         "t3|100-500": 300,
