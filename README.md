@@ -5,8 +5,8 @@
 ```
 
 # React-Antd-admin 
-by:   j-wanghairong@btime.com
-time: 2017.4.19
+by:   wanghairong@btime.com
+time: 2017.3.3
 
 ### [点我预览](http://data.btime.com)
 
