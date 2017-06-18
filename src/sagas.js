@@ -30,7 +30,6 @@ function* fetchLogin(action){
   允许并发（译注：即同时处理多个相同的 action）
 */
 
-
 export default function* rootSaga(){
 	console.log('s');
 	yield [
@@ -38,9 +37,4 @@ export default function* rootSaga(){
 	]
 	console.log('e');
 }
-
-
-
-
-
 

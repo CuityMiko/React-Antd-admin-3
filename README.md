@@ -1,6 +1,7 @@
-#### v3版本特性
+#### 特别说明
 ```bash
--   添加了 react-router-redux , 并实例应用
+-   v3版本特性: 添加了 react-router-redux , 并实例应用
+-   v4正在开发：对echart、table、select等组件进行了进一步封装，封装成高度可复用的组件
 ```
 
 # React-Antd-admin 
