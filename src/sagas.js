@@ -1,5 +1,5 @@
 /*
-** sagas.js   目前未应用saga 6.18
+** sagas.js   目前未应用saga 6.18 whr
 ** auth:whr
 ** time:2017.5.11
 */
