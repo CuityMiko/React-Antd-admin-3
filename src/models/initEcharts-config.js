@@ -90,8 +90,6 @@ function setSeries(series){
   return arr
 }
 
-
-
 export{
   mapDataToOption,
   getInitOption,

@@ -1,5 +1,5 @@
 /*
-** sagas.js 
+** sagas.js   目前未应用saga 6.18
 ** auth:whr
 ** time:2017.5.11
 */
@@ -30,7 +30,6 @@ function* fetchLogin(action){
   允许并发（译注：即同时处理多个相同的 action）
 */
 
-
 export default function* rootSaga(){
 	console.log('s');
 	yield [
@@ -38,9 +37,4 @@ export default function* rootSaga(){
 	]
 	console.log('e');
 }
-
-
-
-
-
 
