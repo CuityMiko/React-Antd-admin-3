@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Form, Input, Row } from 'antd'
+import { Button, Form, Input, Row, message } from 'antd'
 import PropTypes from 'prop-types'
 import { loginAction } from '../../actions'
-import './index.less'
+import LoLess from './index.less'
 const FormItem = Form.Item; 
 
 class Login extends React.Component{
@@ -22,7 +22,7 @@ class Login extends React.Component{
           loginAction.payload = 'in';
           store.dispatch(loginAction)
 				}else{
-					// 抛出账号或密码错误提示
+					message.error('账号或密码错误~');
 				}
 			}
 		})
@@ -41,7 +41,7 @@ class Login extends React.Component{
               rules: [
                 {
                   required: true,
-                  message: '请填写用户名',
+                  message: '请输入用户名',
                 },
               ],
             })(<Input size="large" onPressEnter={this.handleOk} placeholder="用户名" />)}
@@ -51,7 +51,7 @@ class Login extends React.Component{
                 rules: [
                     {
                       required: true,
-                      message: '请填写密码',
+                      message: '请输入密码',
                     },
                 ],
             })(<Input size="large" type="password" onPressEnter={this.handleOk} placeholder="密码" />)}

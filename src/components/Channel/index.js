@@ -7,6 +7,7 @@ import React from 'react'
 import { message } from 'antd'
 import { connect } from 'react-redux'
 import jsonp from 'jsonp'
+// import request from '../../common/request'
 import Echarts from '../Echarts'
 import api from '../../models/api'
 import ChannelForm from './Form'
@@ -40,7 +41,15 @@ class ChannelInfo extends React.Component{
   setRenderData(){
     this.isFirstRequest = false;
     let unloading = message.loading('加载中...');
-    jsonp(api.requestChannelinfoDataApi + this.getParmes(), {}, (err,data) => {
+
+    // fetch: 
+    // request('http://api.btime.com/living/getinfo').then(v => {
+    //   console.log(v)
+    // }).catch( e => {
+    //   console.error(e)
+    // })
+
+    jsonp(api.requestChannelinfoDataApi + this.getParmes(), {}, (err, data) => {
       if(data.code !== 0)return;
       data = data && data.data && data.data.list;
       if(!data || !data.length)return;
@@ -52,7 +61,7 @@ class ChannelInfo extends React.Component{
         }
       })
       unloading();
-    })
+    });
   }
   defaultFirstRequest(){
     const { channelForm } = this.props,
