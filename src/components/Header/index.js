@@ -12,6 +12,11 @@ import './index.less'
 const { Header } = Layout;
 
 class Head extends React.Component{
+  constructor(){
+    super();
+    this.dispatchLogout = this.dispatchLogout.bind(this);
+    this.toUserInfo = this.toUserInfo.bind(this);
+  }
   toUserInfo(){
     // this.context.router.push('/user/about/mylog');
     location.href = '/#/user/about/mylog';
@@ -30,7 +35,7 @@ class Head extends React.Component{
     	    { projectInfo.title }
     	  </div>
     	  <div className="user fr mt-15">
-    	  	<span className="user-name" onClick={this.toUserInfo}>{ projectInfo.userName }</span>
+    	  	<span className="user-name" onClick={ this.toUserInfo }>{ projectInfo.userName }</span>
     	    <div className="icon-logout ml-15" onClick={ this.dispatchLogout }>
     	    	<Icon type="logout" style={{color:'#fff',fontSize:'22px'}}/>
     	    </div>
