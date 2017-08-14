@@ -4,9 +4,6 @@
 -   v4正在开发：对echart、table、select等组件进行了进一步封装，封装成高度可复用的组件
 ```
 
-# React-Antd-admin 
-by:   wanghairong@btime.com
-time: 2017.3.3
 
 ## 介绍
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design) 后台管理系统纯净版
